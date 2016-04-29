@@ -1,8 +1,8 @@
-GPPropo (iOS版)
+GP Propo (iOS版)
 =========
 
 ## 概要
-GPduinoを使ったBLEラジコンのためのプロポアプリです。（iOS版）
+GPduinoを使ったBLEラジコンのためのプロポアプリです。（iOS版）  
 GPduinoは、Arduino+Konashi互換のBLEラジコン制御ボードです。  
 GPduinoに関する詳細は、[GPduino特設ページ](http://lipoyang.net/gpduino)をごらんください。
 
