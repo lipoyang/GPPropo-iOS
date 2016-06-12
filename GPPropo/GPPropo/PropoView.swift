@@ -3,7 +3,7 @@
 //  GPPropo
 //
 //  Created by Bizan Nishimura on 2016/04/19.
-//  Copyright (C) 2016年 Bizan Nishimura. All rights reserved.
+//  Copyright (C)2016 Bizan Nishimura. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,8 @@ import UIKit
 protocol PropoDelegate{
     // On touch PropoView's Bluetooth Button
     func onTouchBtButton()
+    // On touch PropoView's Setting Button
+    func onTouchSetButton()
     // On touch PropoView's FB Stick
     // fb = -1.0 ... +1.0
     func onTouchFbStick(fb: Float)
@@ -30,7 +32,13 @@ class PropoView: UIView {
     var H_BT_BUTTON : Float = 106;
     // Bluetooth button base point
     var X_BT_BUTTON : Float! // = W_SCREEN/2 - W_BT_BUTTON/2;
-    var Y_BT_BUTTON : Float = 107;
+    var Y_BT_BUTTON : Float = 107; // (54 + 106/2)
+    // Setting button size
+    var W_SET_BUTTON : Float = 150;
+    var H_SET_BUTTON : Float = 150;
+    // Setting button base point (left-top)
+    var X_SET_BUTTON : Float! // = W_SCREEN/2 - W_SET_BUTTON/2;
+    var Y_SET_BUTTON : Float = 605; // (530 + 150/2)
     // bar diameter
     var W_BAR : Float = 84;
     var H_BAR : Float = 84;
@@ -53,6 +61,7 @@ class PropoView: UIView {
     var fbTouch : UITouch!	// touch on F<->B bar
     var lrTouch : UITouch!	// touch on L<->R bar
     var btTouch : UITouch!	// touch on Bluetooth button
+    var setTouch : UITouch! // touch on Setting button
 
     // position of F<->B bar, L<->R bar
     var fb_y : Float!
@@ -66,9 +75,11 @@ class PropoView: UIView {
     var imgDisconnected : UIImage!
     var imgConnecting : UIImage!
     var imgConnected : UIImage!
+    var imgSetting : UIImage!
     var viewBarFB : UIImageView!
     var viewBarLR : UIImageView!
     var viewBtButton : UIImageView!
+    var viewSetButton : UIImageView!
     
     // view controller (parent)
     var parent : PropoDelegate!
@@ -96,6 +107,13 @@ class PropoView: UIView {
         // Bluetooth button base point
         X_BT_BUTTON = Float(self.bounds.width)/2;
         Y_BT_BUTTON *= yScale;
+        
+        // Setting button size
+        W_SET_BUTTON *= xScale;
+        H_SET_BUTTON *= yScale;
+        // Setting button base point
+        X_SET_BUTTON = Float(self.bounds.width)/2;
+        Y_SET_BUTTON *= yScale;
         
         // Bar Dimameter
         W_BAR *= xScale;
@@ -127,20 +145,25 @@ class PropoView: UIView {
         imgDisconnected = UIImage(named: "disconnected")
         imgConnecting = UIImage(named: "connecting")
         imgConnected = UIImage(named: "connected")
+        imgSetting = UIImage(named: "setting")
         
         // set images
         viewBarFB = UIImageView(frame: CGRectMake(0,0,CGFloat(W_BAR),CGFloat(H_BAR)))
         viewBarLR = UIImageView(frame: CGRectMake(0,0,CGFloat(W_BAR),CGFloat(H_BAR)))
         viewBtButton = UIImageView(frame: CGRectMake(0,0,CGFloat(W_BT_BUTTON),CGFloat(H_BT_BUTTON)))
+        viewSetButton = UIImageView(frame: CGRectMake(0,0,CGFloat(W_SET_BUTTON),CGFloat(H_SET_BUTTON)))
         viewBarFB.image = imgBar
         viewBarLR.image = imgBar
         viewBtButton.image = imgDisconnected
+        viewSetButton.image = imgSetting
         viewBarFB.layer.position = CGPoint(x: CGFloat(X_FB_BAR), y: CGFloat(fb_y    ))
         viewBarLR.layer.position = CGPoint(x: CGFloat(lr_x    ), y: CGFloat(Y_LR_BAR))
         viewBtButton.layer.position = CGPoint(x: CGFloat(X_BT_BUTTON), y: CGFloat(Y_BT_BUTTON))
+        viewSetButton.layer.position = CGPoint(x: CGFloat(X_SET_BUTTON), y: CGFloat(Y_SET_BUTTON))
         self.addSubview(viewBarFB)
         self.addSubview(viewBarLR)
         self.addSubview(viewBtButton)
+        self.addSubview(viewSetButton)
         
         // enable multi touch
         self.userInteractionEnabled = true;
@@ -148,6 +171,7 @@ class PropoView: UIView {
         fbTouch = nil
         lrTouch = nil
         btTouch = nil
+        setTouch = nil
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -176,6 +200,8 @@ class PropoView: UIView {
             viewBtButton.image = imgDisconnected
             break;
         }
+        // Setting Button
+        viewSetButton.layer.position = CGPoint(x: CGFloat(X_SET_BUTTON), y: CGFloat(Y_SET_BUTTON))
         // F<->B bar
         viewBarFB.layer.position = CGPoint(x: CGFloat(X_FB_BAR), y: CGFloat(fb_y    ))
         // L<->R bar
@@ -235,6 +261,16 @@ class PropoView: UIView {
                     (ty <= (Y_BT_BUTTON + H_BT_BUTTON/2)))
                 {
                     btTouch = touch
+                }
+            }
+            // (4) touch Setting button?
+            if(setTouch == nil){
+                if( (tx >= (X_SET_BUTTON - W_SET_BUTTON/2)) &&
+                    (tx <= (X_SET_BUTTON + W_SET_BUTTON/2)) &&
+                    (ty >= (Y_SET_BUTTON - H_SET_BUTTON/2)) &&
+                    (ty <= (Y_SET_BUTTON + H_SET_BUTTON/2)))
+                {
+                    setTouch = touch
                 }
             }
         }
@@ -328,6 +364,13 @@ class PropoView: UIView {
                 // message to the main activity
                 parent.onTouchBtButton();
             }
+            // (4) leave Setting button?
+            else if(touch === setTouch){
+                setTouch = nil
+                
+                // message to the main activity
+                parent.onTouchSetButton();
+            }
         }
         // redraw
         self.setNeedsDisplay()
@@ -336,7 +379,7 @@ class PropoView: UIView {
     // on touch cancelled
     override func touchesCancelled(touches: Set<UITouch>!, withEvent event: UIEvent!) {
         
-        // (1) leave F<->B bar?
+        // (1) cancel F<->B bar
         fb_y = Y_FB_BAR;
         fbTouch = nil
             
@@ -345,7 +388,7 @@ class PropoView: UIView {
         let fb:Float = -(fb_y - Y_FB_BAR) / L_FB_BAR;
         parent.onTouchFbStick(fb);
         
-        // (2) leave L<->R bar?
+        // (2) cancel L<->R bar
         lr_x = X_LR_BAR;
         lrTouch = nil
         
@@ -354,8 +397,11 @@ class PropoView: UIView {
         let lr:Float = (lr_x - X_LR_BAR) / L_LR_BAR;
         parent.onTouchLrStick(lr);
         
-        // (3) leave Bluetooth button?
+        // (3) cancel Bluetooth button
         btTouch = nil
+        
+        // (4) cancel Setting button
+        setTouch = nil
         
         // redraw
         self.setNeedsDisplay()

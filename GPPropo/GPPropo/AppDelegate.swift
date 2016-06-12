@@ -3,7 +3,7 @@
 //  GPPropo
 //
 //  Created by Bizan Nishimura on 2016/04/19.
-//  Copyright (C) 2016年 Bizan Nishimura. All rights reserved.
+//  Copyright (C)2016 Bizan Nishimura. All rights reserved.
 //
 
 import UIKit

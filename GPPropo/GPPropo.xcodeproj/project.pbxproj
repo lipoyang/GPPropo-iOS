@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5A2104BF1CC675E2007A3D7B /* PropoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2104BE1CC675E2007A3D7B /* PropoView.swift */; };
+		5A56952E1D029098008C3C0E /* SerialReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56952D1D029098008C3C0E /* SerialReceiver.swift */; };
+		5A67534E1CFAD5E20020DFFF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67534D1CFAD5E20020DFFF /* SettingViewController.swift */; };
+		5A6753501CFB03AB0020DFFF /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67534F1CFB03AB0020DFFF /* MyButton.swift */; };
 		5A6A13721CC522FB005A49EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F71F041C098117005F6C16 /* AppDelegate.swift */; };
 		5A6A13731CC52308005A49EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F71F061C098117005F6C16 /* ViewController.swift */; };
+		5ADC19ED1CFF060C008A585D /* NumericUpDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ADC19EC1CFF060C008A585D /* NumericUpDownView.xib */; };
+		5ADC19EF1CFF0871008A585D /* NumericUpDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC19EE1CFF0871008A585D /* NumericUpDownView.swift */; };
 		E1F71F0A1C098117005F6C16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F71F081C098117005F6C16 /* Main.storyboard */; };
 		E1F71F0C1C098117005F6C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F71F0B1C098117005F6C16 /* Assets.xcassets */; };
 		E1F71F461C098148005F6C16 /* CBPeripheral+Konashi.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F71F1F1C098148005F6C16 /* CBPeripheral+Konashi.m */; };
@@ -33,6 +38,11 @@
 
 /* Begin PBXFileReference section */
 		5A2104BE1CC675E2007A3D7B /* PropoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropoView.swift; sourceTree = "<group>"; };
+		5A56952D1D029098008C3C0E /* SerialReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialReceiver.swift; sourceTree = "<group>"; };
+		5A67534D1CFAD5E20020DFFF /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		5A67534F1CFB03AB0020DFFF /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		5ADC19EC1CFF060C008A585D /* NumericUpDownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericUpDownView.xib; sourceTree = "<group>"; };
+		5ADC19EE1CFF0871008A585D /* NumericUpDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericUpDownView.swift; sourceTree = "<group>"; };
 		E1F71F011C098117005F6C16 /* GP Propo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GP Propo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F71F041C098117005F6C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1F71F061C098117005F6C16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,10 +126,15 @@
 				5A2104BE1CC675E2007A3D7B /* PropoView.swift */,
 				E1F71F041C098117005F6C16 /* AppDelegate.swift */,
 				E1F71F061C098117005F6C16 /* ViewController.swift */,
+				5A67534D1CFAD5E20020DFFF /* SettingViewController.swift */,
+				5A67534F1CFB03AB0020DFFF /* MyButton.swift */,
 				E1F71F081C098117005F6C16 /* Main.storyboard */,
 				E1F71F0B1C098117005F6C16 /* Assets.xcassets */,
 				E1F71F101C098117005F6C16 /* Info.plist */,
 				E1F71F171C098135005F6C16 /* GPPropo-Bridging-Header.h */,
+				5ADC19EE1CFF0871008A585D /* NumericUpDownView.swift */,
+				5ADC19EC1CFF060C008A585D /* NumericUpDownView.xib */,
+				5A56952D1D029098008C3C0E /* SerialReceiver.swift */,
 			);
 			path = GPPropo;
 			sourceTree = "<group>";
@@ -236,7 +251,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = titoi2;
+				ORGANIZATIONNAME = lipoyang;
 				TargetAttributes = {
 					E1F71F001C098117005F6C16 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -269,6 +284,7 @@
 			files = (
 				E1F71F0C1C098117005F6C16 /* Assets.xcassets in Resources */,
 				E1F71F0A1C098117005F6C16 /* Main.storyboard in Resources */,
+				5ADC19ED1CFF060C008A585D /* NumericUpDownView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,9 +300,11 @@
 				5A6A13721CC522FB005A49EF /* AppDelegate.swift in Sources */,
 				E1F71F4F1C098148005F6C16 /* KNSKoshianPeripheralImpl.m in Sources */,
 				E1F71F4B1C098148005F6C16 /* Konashi+ADC.m in Sources */,
+				5ADC19EF1CFF0871008A585D /* NumericUpDownView.swift in Sources */,
 				E1F71F531C098148005F6C16 /* KNSPeripheral.m in Sources */,
 				E1F71F491C098148005F6C16 /* KNSCentralManager+UI.m in Sources */,
 				E1F71F521C098148005F6C16 /* KNSHandlerManager.m in Sources */,
+				5A6753501CFB03AB0020DFFF /* MyButton.swift in Sources */,
 				E1F71F4D1C098148005F6C16 /* Konashi+JavaScriptBindings.m in Sources */,
 				E1F71F4E1C098148005F6C16 /* KNSKonashiPeripheralImpl.m in Sources */,
 				E1F71F551C098148005F6C16 /* KonashiUtils.m in Sources */,
@@ -294,8 +312,10 @@
 				E1F71F481C098148005F6C16 /* CBUUID+Konashi.m in Sources */,
 				E1F71F4A1C098148005F6C16 /* Konashi+ACDrive.m in Sources */,
 				E1F71F541C098148005F6C16 /* Konashi.m in Sources */,
+				5A67534E1CFAD5E20020DFFF /* SettingViewController.swift in Sources */,
 				E1F71F501C098148005F6C16 /* KNSPeripheralBaseImpl.m in Sources */,
 				E1F71F511C098148005F6C16 /* KNSCentralManager.m in Sources */,
+				5A56952E1D029098008C3C0E /* SerialReceiver.swift in Sources */,
 				E1F71F4C1C098148005F6C16 /* Konashi+Grove.m in Sources */,
 				E1F71F461C098148005F6C16 /* CBPeripheral+Konashi.m in Sources */,
 			);
@@ -406,6 +426,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GPPropo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.lipoyang.GPPropo;
 				PRODUCT_NAME = "GP Propo";
@@ -424,6 +445,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GPPropo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.lipoyang.GPPropo;
 				PRODUCT_NAME = "GP Propo";

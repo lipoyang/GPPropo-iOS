@@ -3,7 +3,7 @@
 //  GPPropo
 //
 //  Created by Bizan Nishimura on 2016/04/19.
-//  Copyright (C) 2016年 Bizan Nishimura. All rights reserved.
+//  Copyright (C)2016 Bizan Nishimura. All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,13 @@ class ViewController: UIViewController, PropoDelegate {
     
     // Bluetooth status
     var btState = BLEStatus.DISCONNECTED
+    
+    // 4WS Mode
+    var mode4ws:Int = 0
+    let MODE_FRONT:Int = 0
+    let MODE_COMMON:Int = 1
+    let MODE_REVERSE:Int = 2
+    let MODE_REAR:Int = 3
     
     // Propo view
     var propoView: PropoView?
@@ -40,6 +47,16 @@ class ViewController: UIViewController, PropoDelegate {
         propoView = PropoView(frame: frame)
         propoView!.parent = self
         self.view.addSubview(propoView!)
+        
+    }
+    
+    // on view will appear
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 4WS Mode
+        let ud = NSUserDefaults.standardUserDefaults()
+        mode4ws = ud.integerForKey("mode4ws")
         
         // on Koshian device connected
         Konashi.shared().connectedHandler = {
@@ -110,6 +127,18 @@ class ViewController: UIViewController, PropoDelegate {
         }
     }
     
+    // On touch PropoView's Setting Button
+    func onTouchSetButton()
+    {
+        // go to SettingActivity
+        if(btState == BLEStatus.CONNECTED){
+        //if(Konashi.isReady()){
+            
+            let targetViewController = self.storyboard!.instantiateViewControllerWithIdentifier( "setting" )
+            self.presentViewController( targetViewController, animated: true, completion: nil)
+        }
+    }
+    
     // On touch PropoView's FB Stick
     // fb = -1.0 ... +1.0
     func onTouchFbStick(fb: Float)
@@ -133,7 +162,7 @@ class ViewController: UIViewController, PropoDelegate {
         // send the Koshian a message.
         var bLR = (Int)(lr * 127);
         if(bLR<0) {bLR += 256}
-        let command = String(format: "#T%02X$", bLR )
+        let command = String(format: "#T%02X%1d$", bLR, mode4ws )
         NSLog("command;\(command)")
         Konashi.uartWriteString(command)
     }
