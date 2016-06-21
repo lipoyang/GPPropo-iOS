@@ -431,7 +431,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.lipoyang.GPPropo;
 				PRODUCT_NAME = "GP Propo";
-				PROVISIONING_PROFILE = "e2bcd388-c217-46b4-846a-48873bb0f24c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GPPropo/GPPropo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,7 +451,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.lipoyang.GPPropo;
 				PRODUCT_NAME = "GP Propo";
-				PROVISIONING_PROFILE = "e2bcd388-c217-46b4-846a-48873bb0f24c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GPPropo/GPPropo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
