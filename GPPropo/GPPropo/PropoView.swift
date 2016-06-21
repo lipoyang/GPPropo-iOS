@@ -143,6 +143,7 @@ class PropoView: UIView {
         // load images
         imgBar = UIImage(named: "bar")
         imgDisconnected = UIImage(named: "disconnected")
+        //imgDisconnected = UIImage(named: "connected") // for debug
         imgConnecting = UIImage(named: "connecting")
         imgConnected = UIImage(named: "connected")
         imgSetting = UIImage(named: "setting")

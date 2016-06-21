@@ -132,7 +132,7 @@ class ViewController: UIViewController, PropoDelegate {
     {
         // go to SettingActivity
         if(btState == BLEStatus.CONNECTED){
-        //if(Konashi.isReady()){
+        // ??? if(Konashi.isReady()){
             
             let targetViewController = self.storyboard!.instantiateViewControllerWithIdentifier( "setting" )
             self.presentViewController( targetViewController, animated: true, completion: nil)

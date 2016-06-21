@@ -63,6 +63,18 @@ class SettingViewController: UIViewController,
         viewGain1!.setMaxMin(max:255, min:0)
         viewGain2!.setMaxMin(max:255, min:0)
         
+/*        // for debug
+        switchRev0!.on = false
+        switchRev1!.on = true
+        switchRev2!.on = true
+        viewTrim0!.setValue(0)
+        viewTrim1!.setValue(0)
+        viewTrim2!.setValue(0)
+        viewGain0!.setValue(90)
+        viewGain1!.setValue(90)
+        viewGain2!.setValue(90)
+        textVbat!.text = " 3.81 V"
+*/        
         // 4WS Mode
         picker4WS.dataSource = self
         picker4WS.delegate = self
